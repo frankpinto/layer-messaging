@@ -24,6 +24,14 @@ LayerMessaging = (function($, window) {
   var server_url = 'https://api.layer.com';
 
   /**
+   * Self-hosted service provider that generates Identity Tokens to be sent to
+   * Layer in exchange for a session token.
+   *
+   * @var {string} identity_provider
+   */
+  var identity_provider = null;
+
+  /**
    * Layer.com endpoint to generate a new nonce at the start of the
    * authentication handshake.
    *
@@ -52,8 +60,9 @@ LayerMessaging = (function($, window) {
    * Public functions
    */
 
-  var init = function(app_id, token) {
+  var init = function(app_id, ISP, token) {
     APP_ID = app_id;
+    identity_provider = ISP;
 
     if (token)
       session_token = token;
@@ -142,7 +151,7 @@ LayerMessaging = (function($, window) {
     return function(layer_response) {
       var nonce_data = {nonce: layer_response.nonce};
 
-      $.post('/api/2/layer_tokens', nonce_data, callback);
+      $.post(identity_provider, nonce_data, callback);
     };
   };
 
