@@ -1,6 +1,6 @@
 # LayerMessaging
 
-This is a Javascript library to interface with Layer.com's client API from the browser. As of right now there's no way use Layer.com's from the browser, this offers the beginning of way to do that. Currently supports the following:
+This is a Javascript library to interface with Layer.com's client API from the browser. As of right now there's no official way to use Layer.com's messaging in webapps, this offers the beginning of a way to do that. Currently supports the following:
 
 * Listing conversations
 * Creating a conversation
