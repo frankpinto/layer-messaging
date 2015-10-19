@@ -55,6 +55,8 @@ LayerMessaging = (function($, window) {
    */
   var links = null;
 
+  var ws;
+
 
   /*
    * Public functions
@@ -68,11 +70,18 @@ LayerMessaging = (function($, window) {
       session_token = token;
   };
 
+
   /*
    * Public functions - Authentication
    */
 
   var authenticate = function(callback) {
+    if (session_token)
+    {
+      callback(session_token);
+      return;
+    }
+
     post(nonces_endpoint, {}, getIdentityToken(function(identity_service_reply) {
       var token = identity_service_reply.response.token;
 
@@ -240,6 +249,8 @@ LayerMessaging = (function($, window) {
     authenticate: authenticate,
     listConversations: listConversations,
     getAllMessages: getAllMessages,
-    messageHandler: messageHandler
+    messageHandler: messageHandler,
+    createConversation: createConversation,
+    ws: ws
   };
 })(jQuery, window);
