@@ -15,7 +15,7 @@ You need to have setup an identity service provider as specified in this [guide]
 Just include it on your site with `<script src="/path/to/layer-messaging.js"></script>`
 
 ## Usage
-Here's quick example usage, will add more soon. Check out the code if you want to see how to use the functions mentioned above. First, setup (if this is confusing to you :
+Here's quick example usage, will add more soon. Check out the code if you want to see how to use the functions mentioned above. First, setup:
 
 ```javascript
 LayerMessaging.init(YOUR_LAYER_APP_KEY, YOUR_IDENTITY_PROVIDER_URL);
